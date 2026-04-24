@@ -10,6 +10,7 @@
     "strictNullChecks": false,
     "noImplicitAny": false,
     "rootDir": "./src",
+    "types": ["node", "express"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
