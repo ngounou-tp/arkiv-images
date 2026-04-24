@@ -48,4 +48,5 @@ services:
       - key: PORT
         value: 3000
       - key: NEXT_PUBLIC_API_URL
+        value: http://arkiv-api:3001
         sync: false
