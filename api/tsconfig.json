@@ -8,7 +8,8 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "rootDir": "./src",
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
