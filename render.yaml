@@ -1,0 +1,51 @@
+# render.yaml — Render.com deployment blueprint
+# Free tier: Web Services
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  # ─────────────────────────────────────────────
+  # 1. NestJS REST API  (free Web Service)
+  # ─────────────────────────────────────────────
+  - type: web
+    name: arkiv-api
+    runtime: node
+    region: frankfurt
+    plan: free
+    rootDir: api
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /objects
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: MONGODB_URI
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_FOLDER
+        value: arkiv/objects
+
+  # ─────────────────────────────────────────────
+  # 2. Next.js Web App  (free Web Service)
+  # ─────────────────────────────────────────────
+  - type: web
+    name: arkiv-web
+    runtime: node
+    region: frankfurt
+    plan: free
+    rootDir: web
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: NEXT_PUBLIC_API_URL
+        sync: false
